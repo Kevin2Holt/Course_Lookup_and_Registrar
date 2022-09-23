@@ -1,0 +1,86 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&family=Open+Sans:wght@400;500;600;700;800&display=swap');
+/*Organization Elements*/
+html {
+	font-family: 'Open Sans';
+}
+body {
+	margin: 0;/*This lets everything go right up against the sides of the browser's viewport*/
+}
+nav {
+	width: 100%;
+	background-color: #bbb;
+	height: 3.4em;
+	
+}
+footer {
+	padding:  0 0.5em;
+}
+
+/*Style Elements*/
+a {
+	text-decoration: none;
+	color: #000;
+}
+table {
+	background-color: #eee;
+	border: 1px solid #000;
+	border-collapse:  collapse;
+	width: 48.75em;
+}
+
+
+/*Sub-Elements*/
+nav li {
+	display: block;
+	float: left;
+	padding: 1em 0.8em;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+nav h1{
+	float: left;
+	margin: 0;
+	padding: 0.45em;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+table th {
+	background-color: #333;
+	color: #fff;
+	/*border: 1px solid #333;*/
+	border-left: 1px solid #000;
+}
+table td {
+	padding-right: 1em;
+	border-left: 1px solid #000;
+}
+
+/*Actions*/
+nav li:hover {
+	background-color: #777;
+}
+nav h1:hover {
+	background-color: #777;
+}
+
+/*Classes*/
+.content {/*main body content*/
+	padding: 0 0.5em;
+}
+.scrollable {/*For the div surrounding the courses table*/
+	overflow-y:  auto;
+	height: 50em;
+	width: 50em;
+	background-color: red;
+}
+.scrollable thead th {
+	position:  sticky;
+	top: -1;
+	z-index: 1;
+}
+.sidebar {
+
+}
+
+/*IDs*/
+
+</style>
