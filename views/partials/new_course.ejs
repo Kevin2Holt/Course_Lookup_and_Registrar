@@ -14,16 +14,16 @@
 </script>
 
 <div id="newCourse">
-	<form action="/" class="form-container">
+	<form action="/courseCreate" method="POST" class="form-container">
 		<h1>New Course</h1>
 		<div class="newCourse_block">
-			<label for="course_name"><b>Course Name</b></label>
-			<input type="text" placeholder="Enter Course Name" name="course_name" class="newCourse_input" required>
+			<label for="name"><b>Course Name</b></label>
+			<input type="text" placeholder="Enter Course Name" name="name" class="newCourse_input" required>
 		</div>
 
 		<div class="newCourse_block">
-			<label for="dpet"><b>Department</b></label>
-			<select name="dept" class="newCourse_input">
+			<label for="dpet_id"><b>Department</b></label>
+			<select name="dept_id" class="newCourse_input">
 
 				<!-- This is where we need to load in all of the available departments -->
 				<option value="SDEV" default>SDEV</option>
@@ -38,8 +38,8 @@
 		</div>
 
 		<div class="newCourse_block">
-			<label for="credits"><b>Credit Hours</b></label>
-			<input type="number" min="1" max="8" step="1" value="3" name="credits" class="newCourse_input" required>
+			<label for="credit_hours"><b>Credit Hours</b></label>
+			<input type="number" min="1" max="8" step="1" value="3" name="credit_hours" class="newCourse_input" required>
 		</div>
 
 		<div class="newCourse_block desc">

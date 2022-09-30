@@ -6,6 +6,7 @@
 		<%- include("./partials/sidebar.ejs"); %>
 
 		<div class="content">
+			<%- include("./partials/new_course.ejs"); %>
 			<h2>Courses</h2>
 
 			<div class="scrollable">
@@ -21,7 +22,7 @@
 					<% if (courses.length > 0) { %>
 		      			<% courses.forEach(course => { %>
 			      			<tr>
-			      				<td><%= course.course_code %></td>
+			      				<td><a href="/courses/<%= course._id %>" class="singleCourse"><%= course.dept_id + course.course_id %></a></td>
 			      				<td><%= course.name %></td>
 			      				<td><%= course.credit_hours %></td>
 			      				<td><%= course.desc %></td>
