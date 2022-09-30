@@ -1,0 +1,16 @@
+<html lang="en">
+	<%- include("./partials/head.ejs"); %>
+
+	<body>
+		<%- include("./partials/nav.ejs"); %>
+		<%- include("./partials/sidebar.ejs"); %>
+		<div class="content">
+			<%- include("./partials/new_course.ejs"); %>
+
+			<h2><%= course.name %></h2>
+			<p><%= course.dept_id + course.course_id %></p>
+			<p><%= course.desc %></p>
+		</div>
+		<%- include("./partials/footer.ejs"); %>
+	</body>
+</html>
