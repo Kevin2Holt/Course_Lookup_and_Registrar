@@ -1,0 +1,81 @@
+<script>
+	function openEditCourse() {
+		document.getElementById("editCourse").style.visibility = "visible";
+		document.getElementById("editCourse").style.opacity = "1";
+	}
+
+	function closeEditCourse() {
+		document.getElementById("editCourse").style.visibility = "hidden";
+		document.getElementById("editCourse").style.opacity = "0";
+	}
+</script>
+
+<div id="editCourse">
+	<form action="/courseUpdate/<%= course._id %>" method="POST" class="form-container">
+		<h1>Edit Course</h1>
+		<div class="editCourse_block">
+			<label for="name"><b>Course Name</b></label>
+			<input
+			type="text"
+			placeholder="Enter Course Name"
+			name="name"
+			class="editCourse_input"
+			value="<%= course.name %>"
+			required>
+		</div>
+
+		<div class="editCourse_block">
+			<label for="dpet_id"><b>Department</b></label>
+			<select name="dept_id" class="editCourse_input">
+
+				<!-- This is where we need to load in all of the available departments -->
+				<% if(course.dept_id = "SDEV") { %>
+					<option value="SDEV" default>SDEV</option>
+				<% } else { %>
+					<option value="SDEV">SDEV</option>
+				<% } %>
+				<% if(course.dept_id = "CSCI") { %>
+					<option value="CSCI" default>CSCI</option>
+				<% } else { %>
+					<option value="CSCI">CSCI</option>
+				<% } %>
+				
+
+			</select>
+		</div>
+
+		<div class="editCourse_block">
+			<label for="course_id"><b>Course ID</b></label>
+			<input 
+			type="text"
+			placeholder="101"
+			name="course_id"
+			class="editCourse_input"
+			value="<%= course.course_id %>"
+			required>
+		</div>
+
+		<div class="editCourse_block">
+			<label for="credit_hours"><b>Credit Hours</b></label>
+			<input
+				type="number"
+				min="1"
+				max="8"
+				step="1"
+				value="<%= course.credit_hours %>"
+				name="credit_hours"
+				class="editCourse_input"
+				required>
+		</div>
+
+		<div class="editCourse_block desc">
+			<label for="desc" id="desc"><b>Description</b></label>
+			<textarea
+				placeholder="Enter Course Description"
+				name="desc" ><%= course.desc %></textarea>
+		</div>
+
+		<button type="submit" class="btn">Submit</button>
+		<button type="button" class="btn cancel" onclick="closeEditCourse()">Cancel</button>
+	</form>
+</div>

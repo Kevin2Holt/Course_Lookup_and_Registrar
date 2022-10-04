@@ -1,35 +1,52 @@
+/* Sorting & Table of Contents:
+ *
+ * Styles are sectioned by what they affect
+ * Sections are sorted alphabetically
+ * Please update the table of contents as appropriate
+ *
+ * Table of Contents:
+ * > General
+ * > 404 Page
+ * > Course Details Page
+ * > Courses Table
+ * > Nav Bar
+ * > New, Edit, & Remove Pop-ups
+ * > Sidebar
+ */
+
+/*General*/
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&family=Open+Sans:wght@400;500;600;700;800&display=swap');
-/*Organization Elements*/
-html {
+* {
 	font-family: 'Open Sans';
+}
+a {
+	text-decoration: none;
+	color: #000;
 }
 body {
 	margin: 0;/*This lets everything go right up against the sides of the browser's viewport*/
 }
-nav {
-	width: 100%;
-	background-color: #bbb;
-	height: 3.4em;
-	
+.content {/*main body content*/
+	padding: 0 1em;
+	padding-left: 22em;
+	min-height: 10em;
 }
 footer {
 	padding:  0 1em;
 }
 
-/*Style Elements*/
-a {
-	text-decoration: none;
-	color: #000;
-}
-table {
-	background-color: #eee;
-	border: 1px solid #000;
-	border-collapse:  collapse;
-	width: 48.75em;
+
+/*404 Page*/
+#errorMessage{
+	text-align: center;
 }
 
-
-/*Sub-Elements*/
+/* Nav Bar */
+nav {
+	width: 100%;
+	background-color: #bbb;
+	height: 3.4em;
+}
 nav li {
 	display: block;
 	float: left;
@@ -42,6 +59,29 @@ nav h1{
 	padding: 0.45em;
 	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+nav li:hover {
+	background-color: #999;
+}
+nav h1:hover {
+	background-color: #999;
+}
+
+
+/*Course Details Page*/
+.backBtn {
+	float: right;
+}
+.backBtn:hover {
+	color: #4af;
+}
+
+/*Courses Table*/
+table {
+	background-color: #eee;
+	border: 1px solid #000;
+	border-collapse:  collapse;
+	width: 48.75em;
+}
 table th {
 	background-color: #333;
 	color: #fff;
@@ -51,21 +91,6 @@ table th {
 table td {
 	padding-right: 1em;
 	border-left: 1px solid #000;
-}
-
-/*Actions*/
-nav li:hover {
-	background-color: #999;
-}
-nav h1:hover {
-	background-color: #999;
-}
-
-/*Classes*/
-.content {/*main body content*/
-	padding: 0 1em;
-	padding-left: 22em;
-	min-height: 10em;
 }
 .scrollable {/*For the div surrounding the courses table*/
 	overflow-y:  auto;
@@ -77,6 +102,13 @@ nav h1:hover {
 	top: -1;
 	z-index: 1;
 }
+.singleCourse:hover {
+	color: #4af;
+	cursor: pointer;
+}
+
+
+/*Sidebar*/
 .sidebar {
 	background-color: #bbb;
 	padding: 1em;
@@ -129,13 +161,18 @@ nav h1:hover {
 .show {
 	display: block;
 }
-.newCourse_block {
+
+
+/*New, Edit, & Remove Pop-ups*/
+.newCourse_block,
+.editCourse_block {
 	position: relative;
 	display: block;
 	margin:  1em 0;
 	height:  2em;
 }
-.newCourse_input {
+.newCourse_input,
+.editCourse_input {
 	position: absolute;
 	right: 0px;
 	
@@ -144,9 +181,9 @@ nav h1:hover {
 	height:  2em;
 	width:  15em;
 }
-.newCourse_block label {
+.newCourse_block label,
+.editCourse_block label {
 	position: absolute;
-	/*padding: 1em 0;*/
 }
 .desc {
 	height: 5.5em;
@@ -162,19 +199,12 @@ nav h1:hover {
 	display: block;
 	position: static;
 }
-.singleCourse:hover {
-	color: #4af;
-	cursor: pointer;
-}
-
-/*IDs*/
-#errorMessage{
-	text-align: center;
-}
 #desc {
 	display: block;
 }
-#newCourse {
+#newCourse,
+#editCourse,
+#removeCourse {
 	background-color: #efefef;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -191,4 +221,10 @@ nav h1:hover {
 
 	opacity: 0;
 	transition: opacity 0.1s ease-in-out;
+}
+#removeCourse {
+	text-align: center;
+}
+#removeCourse button {
+	margin: 0 5px;
 }

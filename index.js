@@ -50,6 +50,24 @@ app.post("/courseCreate", (req, res) => {
 		.catch((err) => console.log(err));
 });
 
+app.post("/courseUpdate/:id", (req,res) => {
+	const id = req.params.id;
+	console.log(id);
+	console.log(req.body);
+	Course.findByIdAndUpdate(id,req.body)
+		.then((result) => res.redirect("/courses"))
+		.catch((err) => console.log(err));
+});
+
+app.delete("/courseRemove/:id", (req,res) => {
+	const id = req.params.id;
+	Course.findByIdAndDelete(id)
+		.then((result) => {
+			res.json({redirect: "/courses"});
+		})
+		.catch((err) => console.log(err));
+});
+
 //Extra I haven't gotten rid of
 app.get("/link", (req, res) => {
 	res.render("link", { title: "Link" });
