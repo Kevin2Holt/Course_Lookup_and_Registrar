@@ -11,7 +11,7 @@
 </script>
 
 <div id="removeCourse">
-	<form action="/courseRemove/<%= course._id %>" method="DELETE" class="form-container">
+	<form action="/courses/delete/<%= course._id %>" method="DELETE" class="form-container">
 		<h3>Are you sure you want to delete <%= course.dept_id + course.course_id %>?</h3>
 		
 
@@ -22,7 +22,7 @@
 		const trashcan = document.querySelector("button#deleteBtn");
 
 		trashcan.addEventListener("click", (event) => {
-			const endpoint = `/blogs/${trashcan.dataset.doc}`;
+			const endpoint = `/courses/${trashcan.dataset.doc}`;
 
 			fetch(endpoint, {method: "DELETE"})
 			.then((res) => res.json())

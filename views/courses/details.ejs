@@ -1,13 +1,13 @@
 <html lang="en">
-	<%- include("./partials/head.ejs"); %>
+	<%- include("../partials/head.ejs"); %>
 
 	<body>
-		<%- include("./partials/nav.ejs"); %>
-		<%- include("./partials/sidebar.ejs"); %>
+		<%- include("../partials/nav.ejs"); %>
+		<%- include("../partials/sidebar.ejs"); %>
 		<div class="content">
-			<%- include("./partials/new_course.ejs"); %>
-			<%- include("./partials/edit_course.ejs"); %>
-			<%- include("./partials/remove_course_confirm.ejs"); %>
+			<%- include("../partials/new_course.ejs"); %>
+			<%- include("../partials/edit_course.ejs"); %>
+			<%- include("../partials/remove_course_confirm.ejs"); %>
 
 			<a href="/courses" class="backBtn">Back</a>
 
@@ -18,6 +18,6 @@
 			<button onclick="openRemoveCourseConfirm()" name="removeCourseBtn">Delete</button>
 			<button onclick="openEditCourse()" name="editCourseBtn">Edit</button>
 		</div>
-		<%- include("./partials/footer.ejs"); %>
+		<%- include("../partials/footer.ejs"); %>
 	</body>
 </html>
