@@ -1,34 +1,33 @@
 const User = require("../models/user");
-const brcypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const register = (req, res, next) => {
-  brcypt.hash(req.body.password, 10, function (err, hashedPassword) {
+  bcrypt.hash(req.body.password, 10, function (err, hashedPassword) {
     if (err) {
       res.json({
         error: err,
       });
     }
-  });
-
-  //New user object. New user properties contain name, email and password
-  let user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: hashedPassword,
-  });
-  user
-    .save()
-    .then((user) => {
-      res.json({
-        message: "New user account created successfully!",
-      });
-    })
-    .catch((error) => {
-      res.json({
-        message: "Error creating account",
-      });
+    //New user object. New user properties contain name, email and password
+    let user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
     });
+    user
+      .save()
+      .then((user) => {
+        res.json({
+          message: "New user account created successfully!",
+        });
+      })
+      .catch((error) => {
+        res.json({
+          message: "Error creating account",
+        });
+      });
+  });
 };
 
 const login = (req, res, next) => {
