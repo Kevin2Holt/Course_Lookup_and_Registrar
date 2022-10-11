@@ -26,8 +26,7 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Code University" });
 });
 
-app.use("/courses", courseRouter);
-app.use("/", authRouter);
+app.use("/courses", courseRouter, authRouter);
 
 // 404 page
 app.use((req, res) => {

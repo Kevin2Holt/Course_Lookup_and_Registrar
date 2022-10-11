@@ -47,7 +47,7 @@ const login = (req, res, next) => {
         }
         if (result) {
           //Password assign token after successful login. Token is valid for an hour
-          let token = jwt.sign({ name: user.name }, "secretValue", {
+          let token = jwt.sign({ name: user.name }, "AzQ,PI)0(", {
             expiresIn: "1h",
           });
           return res.json({
