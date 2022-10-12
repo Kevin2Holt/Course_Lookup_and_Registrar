@@ -1,17 +1,117 @@
 <nav>
-	<a href="/"><h1>Site Title</h1></a>
-	<ul>
-		<a href="/"><li>Home</li></a>
-		<a href="/courses"><li>Courses</li></a>
-		<li>
-			<div class="login">
-				<button class="loginButton" type="submit" onclick="">Log in</button>
-			</div>
-		</li>
-		
-	</ul>
-	
+  <a href="/"><h1>Site Title</h1></a>
+  <ul>
+    <a href="/"><li>Home</li></a>
+    <a href="/courses"><li>Courses</li></a>
+    <li class="login">
+      <button id="login" type="submit">Log in</button>
+    </li>
+
+    <li class="signUp">
+      <button id="signUp" type="submit">Sign Up</button>
+    </li>
+  </ul>
 </nav>
 
-<script src="../../login.js"></script>
+<div id="loginForm">
+  <form action="/courses" method="POST">
+    <div>
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" placeholder="Your email..." />
+    </div>
 
+    <div>
+      <label for="password"> Password </label>
+      <input
+        type="text"
+        id="password"
+        name="password"
+        placeholder="Your password..."
+      />
+    </div>
+
+    <div>
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+
+<div id="newUser">
+  <form action="/courses" method="POST">
+    <div>
+      <label for="fname">First name:</label>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        placeholder="Your first name..."
+      />
+    </div>
+
+    <div>
+      <label for="lname">Last name:</label>
+      <input
+        type="text"
+        id="lname"
+        name="lname"
+        placeholder="Your last name..."
+      />
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="Your email address..."
+      />
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input
+        type="text"
+        id="password"
+        name="password"
+        placeholder="Your password..."
+      />
+    </div>
+
+    <div>
+      <label for="password">Confirm Password</label>
+      <input
+        type="text"
+        id="password"
+        name="password"
+        placeholder="Enter same password from above.."
+      />
+    </div>
+
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+
+<script>
+  const login = document.getElementById("login");
+  login.addEventListener("click", () => {
+    const loginForm = document.getElementById("loginForm");
+
+    if (loginForm.style.display === "none") {
+      loginForm.style.display = "block";
+    } else {
+      loginForm.style.display = "none";
+    }
+  });
+
+  const signUp = document.getElementById("signUp");
+  signUp.addEventListener("click", () => {
+    const newUser = document.getElementById("newUser");
+
+    if (newUser.style.display === "none") {
+      newUser.style.display = "block";
+    } else {
+      newUser.style.display = "none";
+    }
+  });
+</script>
