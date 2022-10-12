@@ -1,0 +1,90 @@
+<script>
+	function open_registerPop() {
+		document.getElementById("registerPop").style.visibility = "visible";
+		document.getElementById("registerPop").style.opacity = "1";
+	}
+
+	function close_registerPop() {
+		document.getElementById("registerPop").style.visibility = "hidden";
+		document.getElementById("registerPop").style.opacity = "0";
+	}
+</script>
+
+<div class="popup_container" id="registerPop">
+	<form action="/auth/register" method="POST" class="form-container" id="registerForm">
+
+		<h1>Register</h1>
+
+		<div class="popup_section">
+			<label for="name"><b>Name</b></label>
+			<input
+				type="text"
+				placeholder="Name"
+				name="name"
+				class="popup_input"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="email"><b>Email</b></label>
+			<input
+				type="text"
+				placeholder="Email"
+				name="email"
+				class="popup_input"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="password"><b>Password</b></label>
+			<input
+				type="password"
+				placeholder="Password"
+				name="password"
+				class="popup_input"
+				required>
+		</div>
+
+		<button type="submit" class="btn">Submit</button>
+		<button type="button" class="btn cancel" onclick="close_loginPop()">Cancel</button>
+
+	</form>
+
+	<!-- <script>
+		const registerForm = document.querySelector("#registerForm");
+		// const emailError = document.querySelector(".email.error");
+		// const passwordError = document.querySelector(".password.error");
+
+
+		registerForm.addEventListener("submit", async (e) => {
+			e.preventDefault();
+
+			// Reset Errors
+			// emailError.textContent = "";
+			// passwordError.textContent = "";
+
+			// Get the values
+			const email = registerForm.email.value;
+			const password = registerForm.password.value;
+
+			try {
+				const res = await fetch("/auth/register", {
+					method: "POST",
+					body: JSON.stringify({email, password}),
+					headers: {"Content-Type": "application/json"}
+				});
+				const data = await res.json();
+				if(data.errors) {
+					// emailError.textContent = data.errors.email;
+					// passworderror.textContent = data.errors.password;
+				}
+				if(data.user) {
+					location.assign("/courses");
+				}
+			}
+			catch (err) {
+				console.log(err);
+			}
+		});
+	</script> -->
+</div>
