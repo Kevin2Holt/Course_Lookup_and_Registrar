@@ -41,7 +41,7 @@ app.get("/", (req,res) => {
 // Use Routers
 app.use("/courses", courseRouter);
 app.use("/auth", authRouter);
-app.use("/account", requireAccountEdit, accountRouter);
+app.use("/accounts", requireAccountEdit, accountRouter);
 
 // 404 Page
 app.use((req,res) => {

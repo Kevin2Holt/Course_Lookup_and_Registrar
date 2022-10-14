@@ -57,6 +57,45 @@ module.exports.logout_get = (req,res) => {
 	res.redirect("/");
 }
 
+module.exports.edit_post = async (req,res) => {
+	const id = req.params.id;
+
+	const {lastName,firstName,email,username,accountType} = req.body;
+	let permissions;
+
+	switch(accountType) {
+		case "STUDENT":
+			permissions = [
+				"course.register"
+			];
+			break;
+		case "FACULTY":
+			permissions = [
+				"course.edit"
+			];
+			break;
+		case "ADMIN":
+			permissions = [
+				"course.edit",
+				"account.edit"
+			];
+			break;
+		default:
+			permissions = [];
+	}
+
+	await User.findByIdAndUpdate(id,{
+		lastName,
+		firstName,
+		email,
+		username,
+		accountType,
+		permissions
+	})
+		.then((result) => res.redirect("/accounts/"+id))
+		.catch((err) => console.log(err));
+}
+
 const handleErrors = (err) => {
 	console.log(err.message, err.code);
 	let errors = {email: "", password: ""};

@@ -12,12 +12,13 @@
 
 <div id="menu_container">
 	<ul id="menu">
+		<a href="/courses"><li>Courses</li></a>
 		<% if(user.permissions.includes("account.edit")) { %>
 			<a href="/accounts/list"><li>Accounts</li></a>
 		<% } %>
-		<a href="/courses"><li>Courses</li></a>
 		<% if(user.permissions.includes("course.register")) { %>
 			<a href="/courses/register"><li>Add/Drop Classes</li></a>
+			<a href="/courses/register/my"><li>My Classes</li></a>
 		<% } %>
 	</ul>
 </div>

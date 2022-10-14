@@ -5,7 +5,9 @@ const accountController = require("../controllers/accountController");
 const router = express.Router();
 
 router.get(	"/list", 	accountController.list_get);
+// router.get(	"/logout",	accountController.logout_get);
+router.delete("/:id",	accountController.delete_delete);
 router.get(	"/:id", 	accountController.details_get);
-// router.get(	"/logout",		authController.logout_get);
+
 
 module.exports= router;

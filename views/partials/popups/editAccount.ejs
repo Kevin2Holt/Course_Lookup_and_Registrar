@@ -1,0 +1,94 @@
+<script>
+	function open_editAccount() {
+		document.getElementById("editAccount").style.visibility = "visible";
+		document.getElementById("editAccount").style.opacity = "1";
+	}
+
+	function close_editAccount() {
+		document.getElementById("editAccount").style.visibility = "hidden";
+		document.getElementById("editAccount").style.opacity = "0";
+	}
+</script>
+
+<div class="popup_container" id="editAccount">
+	<form action="/auth/edit/<%= account._id %>" method="POST" class="form-container" id="registerForm">
+
+		<h1>Edit Account</h1>
+
+		<div class="popup_section">
+			<label for="lastName"><b>Last Name</b></label>
+			<input
+				type="text"
+				placeholder="Last Name"
+				name="lastName"
+				class="popup_input"
+				value="<%= account.lastName %>"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="firstName"><b>First Name</b></label>
+			<input
+				type="text"
+				placeholder="First Name"
+				name="firstName"
+				class="popup_input"
+				value="<%= account.firstName %>"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="username"><b>Username</b></label>
+			<input
+				type="text"
+				placeholder="Username"
+				name="username"
+				class="popup_input"
+				value="<%= account.username %>"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="email"><b>Email</b></label>
+			<input
+				type="text"
+				placeholder="Email"
+				name="email"
+				class="popup_input"
+				value="<%= account.email %>"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="password"><b>Password</b></label>
+			<label name="password" class="popup_input">Unavailable</label>
+		</div>
+
+		<div class="popup_section">
+			<label for="accountType"><b>Account Type</b></label>
+			<select name="accountType" class="popup_input" required>
+
+				<!-- This could be replaced by something that reads in different account types -->
+
+				<% if(account.accountType == "STUDENT") { %>
+					<option value="STUDENT" default	>Student</option>
+					<option value="FACULTY"			>Faculty</option>
+					<option value="ADMIN"			>Admin</option>
+				<% } else if(account.accountType == "FACULTY") { %>
+					<option value="STUDENT" 		>Student</option>
+					<option value="FACULTY" default	>Faculty</option>
+					<option value="ADMIN"			>Admin</option>
+				<% } else if(account.accountType == "ADMIN") { %>
+					<option value="STUDENT" 		>Student</option>
+					<option value="FACULTY"			>Faculty</option>
+					<option value="ADMIN" default	>Admin</option>
+				<% } %>
+
+			</select>
+		</div>
+
+		<button type="submit" class="btn">Submit</button>
+		<button type="button" class="btn cancel" onclick="close_editAccount()">Cancel</button>
+
+	</form>
+</div>

@@ -1,0 +1,14 @@
+<%- include("../partials/head.ejs") %>
+<a href="/courses/register" class="backBtn">Back</a>
+
+<h2><%= course.name %></h2>
+<p><%= course.dept_id + course.course_id %></p>
+<p><%= course.desc %></p>
+
+<form method="post" action="/courses/register/add/<%= course._id %>/<%= user._id %>">
+  <input type="hidden" name="name" value="value" /> 
+  <a onclick="this.parentNode.submit();" class="regBtn">Add</a>
+</form>
+<a action="/courses/register" class="regBtn">Back</a>
+
+<%- include("../partials/foot.ejs") %>

@@ -89,6 +89,18 @@ nav #menuBtn {
 .backBtn:hover {
 	color: #4af;
 }
+.regBtn {
+	padding: 0.25em 0.5em;
+	margin-right: 0.3em;
+	float: left;
+	background-color: #bbb;
+	transition: background-color: 0.3s ease-in-out;
+}
+.regBtn:hover {
+	cursor: pointer;
+	background-color: #999;
+}
+
 
 /*Courses Table*/
 table {

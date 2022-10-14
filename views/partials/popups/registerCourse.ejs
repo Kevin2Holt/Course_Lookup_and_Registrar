@@ -1,0 +1,33 @@
+<script>
+	let courseDetail;
+	let shoppingList;
+	async function open_registerCourse(courseId) {
+		await Course.findById(courseId)
+			.then((result) => courseDetail = result)
+			.catch((err) => console.log(err));
+		document.getElementById("registerCourse").style.visibility = "visible";
+		document.getElementById("registerCourse").style.opacity = "1";
+	}
+
+	function close_registerCourse() {
+		document.getElementById("registerCourse").style.visibility = "hidden";
+		document.getElementById("registerCourse").style.opacity = "0";
+	}
+</script>
+
+<div class="popup_container" id="registerCourse">
+	<form action="javascript:shoppingList.push(courseId)"  class="form-container">
+		<h3><%= courseDetail.name %></h3>
+		<p><%= courseDetail.dept_id + courseDetail.course_id %></p>
+		<p><%= courseDetail.desc %></p>
+		
+
+		<button type="button" class="btn" id="addCourseBtn">Add</button>
+		<button type="button" class="btn cancel" onclick="close_registerCourse()">Cancel</button>
+	</form>
+	<script>
+		// function addCourseToShopingList(courseId) {
+		// 	shoppingList.push(courseId);
+		// }
+	</script>
+</div>

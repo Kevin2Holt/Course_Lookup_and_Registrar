@@ -1,0 +1,33 @@
+<script>
+	function open_deleteAccount() {
+		document.getElementById("deleteAccount").style.visibility = "visible";
+		document.getElementById("deleteAccount").style.opacity = "1";
+	}
+
+	function close_deleteAccount() {
+		document.getElementById("deleteAccount").style.visibility = "hidden";
+		document.getElementById("deleteAccount").style.opacity = "0";
+	}
+</script>
+
+<div class="popup_container" id="deleteAccount">
+	<form class="form-container">
+		<h3>Are you sure you want to delete <%= account.name %>'s account?</h3>
+		
+
+		<button type="button" class="btn" id="deleteAcctBtn" data-doc="<%= account._id %>">Delete</button>
+		<button type="button" class="btn cancel" onclick="close_deleteCourse()">Cancel</button>
+	</form>
+	<script>
+		const trashcan = document.querySelector("button#deleteAcctBtn");
+
+		trashcan.addEventListener("click", (event) => {
+			const endpoint = `/accounts/${trashcan.dataset.doc}`;
+
+			fetch(endpoint, {method: "DELETE"})
+			.then((res) => res.json())
+			.then((data) => window.location.href = data.redirect)
+			.catch((err) => console.log(err));
+		});
+	</script>
+</div>

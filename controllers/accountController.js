@@ -23,14 +23,13 @@ module.exports.details_get = (req, res) => {
 	const id = req.params.id;
 	User.findById(id)
 		.then((result) => {
-			console.log(result);
 			res.render("./accounts/details", {
 				title: "Account Details",
 				popups: {
 					newCourse:false,
-					editCourse:true,
-					deleteCourse:true,
-					login:true,
+					editCourse:false,
+					deleteCourse:false,
+					login:false,
 					register:true,
 					logout:true
 				},
@@ -39,3 +38,10 @@ module.exports.details_get = (req, res) => {
 		})
 		.catch((err) => console.log(err));
 };
+
+module.exports.delete_delete = (req,res) => {
+	const id = req.params.id;
+	User.findByIdAndDelete(id)
+		.then((result) => res.json({redirect: "/accounts/list"}))
+		.catch((err) => console.log(err));
+}
