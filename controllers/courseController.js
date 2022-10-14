@@ -40,6 +40,20 @@ module.exports.details_get = (req, res) => {
 		.catch((err) => console.log(err));
 };
 
+module.exports.register_get = (req,res) => {
+	res.render("./courses/register", {
+		title: "Add/Drop Classes",
+		popups: {
+			newCourse:false,
+			editCourse:false,
+			deleteCourse:false,
+			login:false,
+			register:false,
+			logout:true
+		}
+	});
+};
+
 module.exports.create_post = (req, res) => {
 	const course = new Course(req.body);
 

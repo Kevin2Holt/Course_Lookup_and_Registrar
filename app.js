@@ -5,7 +5,8 @@ const cookieParser = require("cookie-parser");
 // Routers
 const courseRouter = require("./routers/courseRouter");
 const authRouter = require("./routers/authRouter");
-const {requireAuth,checkUser} = require("./middleware/authMiddleware");
+const accountRouter = require("./routers/accountRouter");
+const {requireAccountEdit,checkUser} = require("./middleware/authMiddleware");
 
 // Setup
 const app = express();
@@ -40,6 +41,7 @@ app.get("/", (req,res) => {
 // Use Routers
 app.use("/courses", courseRouter);
 app.use("/auth", authRouter);
+app.use("/account", requireAccountEdit, accountRouter);
 
 // 404 Page
 app.use((req,res) => {

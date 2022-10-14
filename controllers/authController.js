@@ -2,8 +2,31 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 module.exports.register_post = async (req,res) => {
+	const {lastName,firstName,email,username,password,accountType} = req.body;
+	let permissions;
+
+	switch(accountType) {
+		case "STUDENT":
+			permissions = [
+				"course.register"
+			];
+			break;
+		case "FACULTY":
+			permissions = [
+				"course.edit"
+			];
+			break;
+		case "ADMIN":
+			permissions = [
+				"course.edit",
+				"account.edit"
+			];
+			break;
+		default:
+			permissions = [];
+	}
 	try {
-		const user = await User.create(req.body);
+		const user = await User.create({lastName,firstName,email,username,password,accountType,permissions});
 		const token = createToken(user._id);
 		res.cookie("codeuni_accountToken",token, {httpOnly:true});
 		res.redirect("/courses");
@@ -15,12 +38,12 @@ module.exports.register_post = async (req,res) => {
 };
 
 module.exports.login_post = async (req,res) => {
-	const {email,password} = req.body;
+	const {username,password} = req.body;
 
 	try {
-		const user = await User.login(email,password);
+		const user = await User.login(username,password);
 		const token = createToken(user._id);
-		res.cookie("codeuni_accountToken", token, {httpOnly:true, maxAge:50000000});
+		res.cookie("codeuni_accountToken", token, {httpOnly:true});
 		res.redirect("/courses");
 	}
 	catch (err) {

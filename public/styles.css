@@ -28,7 +28,7 @@ body {
 }
 .content {/*main body content*/
 	padding: 0 1em;
-	padding-left: 22em;
+	padding-left: 10em;
 	min-height: 10em;
 }
 footer {
@@ -75,6 +75,11 @@ nav #authNav {
 nav ul {
 	margin: 0;
 }
+nav #menuBtn {
+	font-size: 20pt;
+	padding: 0.18em 0.5em 0.22em 0.5em;
+
+}
 
 
 /*Course Details Page*/
@@ -118,6 +123,35 @@ table td {
 }
 #newCourseBtn {
 	float: right;
+}
+
+
+/*Menu*/
+#menu_container {
+	background-color: #efefef;
+	position: fixed;
+	padding: 0;
+	right: 0;
+	top: 3.35em;
+	margin: auto;
+	z-index: 10;
+	visibility: hidden;
+
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+}
+#menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+#menu li {
+	padding: 0.5em 1em;
+	text-align: center;
+	transition: background-color 0.3s ease-in-out;
+}
+#menu li:hover {
+	background-color: #bbb;
 }
 
 

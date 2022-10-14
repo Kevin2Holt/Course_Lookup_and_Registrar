@@ -5,6 +5,8 @@
 <p><%= course.dept_id + course.course_id %></p>
 <p><%= course.desc %></p>
 
-<button onclick="open_deleteCourse()" name="removeCourseBtn">Delete</button>
-<button onclick="open_editCourse()" name="editCourseBtn">Edit</button>
+<% if(user.permissions.includes("course.edit")) { %>
+	<button onclick="open_deleteCourse()" name="deleteCourseBtn">Delete</button>
+	<button onclick="open_editCourse()" name="editCourseBtn">Edit</button>
+<% } %>
 <%- include("../partials/foot.ejs") %>

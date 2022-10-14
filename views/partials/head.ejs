@@ -15,8 +15,9 @@
 		</ul>
 		<ul id="authNav">
 			<% if(user) { %>
-				<li>Welcome, <%=user.name%></li>
+				<li>Welcome, <%= user.name %></li>
 				<a href="/auth/logout"><li>Log Out</li></a>
+				<a href="javascript:open_menu()"><li id="menuBtn">☰</li></a>
 			<% } else { %>
 				<a href="javascript:open_loginPop()"	><li>Log In</li></a>
 				<a href="javascript:open_registerPop()"	><li>Register</li></a>
@@ -25,4 +26,3 @@
 	</nav>
 	<div class="content">
 		<%- include("./popups.ejs"); %>
-		

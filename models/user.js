@@ -6,8 +6,13 @@ const Schema = mongoose.Schema;
 
 //Schema for users
 const userSchema = new Schema({
-	name: {
+	lastName: {
 		type: String,
+		uppercase: true
+	},
+	firstName: {
+		type: String,
+		uppercase: true
 	},
 	email: {
 		type: String,
@@ -16,14 +21,29 @@ const userSchema = new Schema({
 		lowercase: true,
 		validate: [isEmail, "Please enter a valid email"]
 	},
+	username: {
+		type: String,
+		required: [true, "Please enter a username"]
+	},
 	password: {
 		type: String,
 		required: [true, "Please enter a password"],
 		minlength: [6, "Minimum password length is 6 characters"]
 	},
+	accountType: {
+		type: String
+	},
+	permissions: {
+		type: [String],
+		required: true
+	}
 	},
 	{ timestamps: true }
 );
+
+userSchema.virtual("name").get(function() {
+	return this.firstName.charAt(0).toUpperCase()+this.firstName.slice(1).toLowerCase() + " " + this.lastName.charAt(0).toUpperCase()+this.lastName.slice(1).toLowerCase();
+});
 
 // Fire a function before doc saved to db
 userSchema.pre("save", async function (next) {
@@ -33,8 +53,8 @@ userSchema.pre("save", async function (next) {
 });
 
 //Static method to login user
-userSchema.statics.login = async function(email, password) {
-	const user = await this.findOne({email});
+userSchema.statics.login = async function(username, password) {
+	const user = await this.findOne({username});
 	if(user) {
 		const auth = await bcrypt.compare(password,user.password);
 		if(auth) {
@@ -45,6 +65,6 @@ userSchema.statics.login = async function(email, password) {
 	throw Error("Incorrect email");
 };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("user", userSchema);
 
 module.exports = User;

@@ -1,0 +1,29 @@
+<%- include("../partials/head.ejs"); %>
+
+<button onclick="open_registerPop()" id="newCourseBtn">New Account</button>
+<h2>Accounts</h2>
+
+<div class="scrollable">
+	<table>
+		<thead>
+			<th>Last Name</th>
+			<th>First Name</th>
+			<th>Email</th>
+			<th>Type</th>
+		</thead>
+
+		<!--Load in courses & insert them into table-->
+		<% if (accounts.length > 0) { %>
+  			<% accounts.forEach(account => { %>
+      			<tr>
+      				<td><a href="/accounts/<%= account._id %>" class="listItem"><%= account.lastName %></a></td>
+      				<td><a href="/accounts/<%= account._id %>" class="listItem"><%= account.firstName %></a></td>
+      				<td><%= account.email %></td>
+      				<td><%= account.accountType %></td>
+      			</tr>
+  			<% }); %>
+  		<% } %>
+  	</table>
+</div>
+
+<%- include("../partials/foot.ejs"); %>

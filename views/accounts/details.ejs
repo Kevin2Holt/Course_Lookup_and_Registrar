@@ -1,0 +1,12 @@
+<%- include("../partials/head.ejs"); %>
+
+<a href="/accounts/list" class="backBtn">Back</a>
+
+<h2>Name: <%= account.name %></h2>
+<p>Email: <%= account.email %></p>
+
+
+<button onclick="open_deleteUser()" name="deleteCourseBtn">Delete</button>
+<button onclick="open_editUser()" name="editCourseBtn">Edit</button>
+
+<%- include("../partials/foot.ejs"); %>

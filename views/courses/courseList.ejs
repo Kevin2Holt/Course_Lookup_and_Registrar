@@ -1,5 +1,9 @@
 <%- include("../partials/head.ejs") %>
-<button onclick="open_newCourse()" id="newCourseBtn">New Course</button>
+<% if(user) { %>
+<% if(user.permissions.includes("course.edit")) { %>
+	<button onclick="open_newCourse()" id="newCourseBtn">New Course</button>
+<% } } %>
+
 <h2>Courses</h2>
 
 <div class="scrollable">

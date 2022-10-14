@@ -16,11 +16,31 @@
 		<h1>Register</h1>
 
 		<div class="popup_section">
-			<label for="name"><b>Name</b></label>
+			<label for="lastName"><b>Last Name</b></label>
 			<input
 				type="text"
-				placeholder="Name"
-				name="name"
+				placeholder="Last Name"
+				name="lastName"
+				class="popup_input"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="firstName"><b>First Name</b></label>
+			<input
+				type="text"
+				placeholder="First Name"
+				name="firstName"
+				class="popup_input"
+				required>
+		</div>
+
+		<div class="popup_section">
+			<label for="username"><b>Username</b></label>
+			<input
+				type="text"
+				placeholder="Username"
+				name="username"
 				class="popup_input"
 				required>
 		</div>
@@ -45,46 +65,19 @@
 				required>
 		</div>
 
+		<div class="popup_section">
+			<label for="accountType"><b>Account Type</b></label>
+			<select name="accountType" class="popup_input" required>
+
+				<option value="STUDENT" default	>Student</option>
+				<option value="FACULTY"			>Faculty</option>
+				<option value="ADMIN"			>Admin</option>
+
+			</select>
+		</div>
+
 		<button type="submit" class="btn">Submit</button>
-		<button type="button" class="btn cancel" onclick="close_loginPop()">Cancel</button>
+		<button type="button" class="btn cancel" onclick="close_registerPop()">Cancel</button>
 
 	</form>
-
-	<!-- <script>
-		const registerForm = document.querySelector("#registerForm");
-		// const emailError = document.querySelector(".email.error");
-		// const passwordError = document.querySelector(".password.error");
-
-
-		registerForm.addEventListener("submit", async (e) => {
-			e.preventDefault();
-
-			// Reset Errors
-			// emailError.textContent = "";
-			// passwordError.textContent = "";
-
-			// Get the values
-			const email = registerForm.email.value;
-			const password = registerForm.password.value;
-
-			try {
-				const res = await fetch("/auth/register", {
-					method: "POST",
-					body: JSON.stringify({email, password}),
-					headers: {"Content-Type": "application/json"}
-				});
-				const data = await res.json();
-				if(data.errors) {
-					// emailError.textContent = data.errors.email;
-					// passworderror.textContent = data.errors.password;
-				}
-				if(data.user) {
-					location.assign("/courses");
-				}
-			}
-			catch (err) {
-				console.log(err);
-			}
-		});
-	</script> -->
 </div>
