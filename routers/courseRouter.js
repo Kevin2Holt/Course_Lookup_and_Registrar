@@ -10,6 +10,7 @@ router.get(		"/", courseController.list_get);
 router.get(		"/register",							courseController.register_get);
 router.get(		"/register/my", requireCourseRegister,	courseController.my_get);
 router.post(	"/register/add/:id/:stuid",				courseController.addCourse_post);
+router.post(	"/register/delete/:id/:stuid",			courseController.removeCourse_post);
 router.get(		"/register/:id",						courseController.regDetails_get);
 
 

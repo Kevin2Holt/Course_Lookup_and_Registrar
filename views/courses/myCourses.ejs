@@ -9,7 +9,7 @@
 			<th>Code</th>
 			<th>Name</th>
 			<th>Credits</th>
-			<th>Description</th>
+			<th></th>
 		</thead>
 
 		<!--Load in courses & insert them into table-->
@@ -19,7 +19,7 @@
       				<td><a href="/courses/<%= course._id %>" class="singleCourse"><%= course.dept_id + course.course_id %></a></td>
       				<td><a href="/courses/<%= course._id %>" class="singleCourse"><%= course.name %></a></td>
       				<td><%= course.credit_hours %></td>
-      				<td><%= course.desc %></td>
+      				<td><form action="/courses/register/delete/<%= course._id %>/<%= user._id %>" method="POST"><button type="submit">Remove</button></form></td>
       			</tr>
   			<% }); %>
   		<% } %>
