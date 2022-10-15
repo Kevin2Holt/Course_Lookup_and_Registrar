@@ -2,6 +2,7 @@
 	function open_deleteCourse() {
 		document.getElementById("deleteCourse").style.visibility = "visible";
 		document.getElementById("deleteCourse").style.opacity = "1";
+		console.log(course._id);
 	}
 
 	function close_deleteCourse() {
@@ -11,10 +12,9 @@
 </script>
 
 <div class="popup_container" id="deleteCourse">
-	<form action="/courses/delete/<%= course._id %>" method="DELETE" class="form-container">
+	<form class="form-container">
 		<h3>Are you sure you want to delete <%= course.dept_id + course.course_id %>?</h3>
 		
-
 		<button type="button" class="btn" id="deleteBtn" data-doc="<%= course._id %>">Delete</button>
 		<button type="button" class="btn cancel" onclick="close_deleteCourse()">Cancel</button>
 	</form>
