@@ -1,0 +1,15 @@
+<%- include("../partials/head.ejs"); %>
+<%- include("../partials/popups/deleteAccount.ejs"); %>
+<%- include("../partials/popups/editAccount.ejs"); %>
+
+<a href="/accounts/list" class="backBtn">Back</a>
+
+<h2>Name: <%= account.name %></h2>
+<p>Email: <%= account.email %></p>
+<p>Username: <%= account.username %></p>
+
+
+<button onclick="open_deleteAccount()" name="deleteAccountBtn">Delete</button>
+<button onclick="open_editAccount()" name="editAccountBtn">Edit</button>
+
+<%- include("../partials/foot.ejs"); %>

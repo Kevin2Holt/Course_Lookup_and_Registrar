@@ -1,73 +1,130 @@
 const User = require("../models/user");
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const register = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10, function (err, hashedPassword) {
-    if (err) {
-      return res.json({
-        error: err,
-      });
-    }
-    //New user object. New user properties contain name, email and password
-    let user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    });
-    user
-      .save()
-      .then((user) => {
-        return res.json({
-          message: "New user account created successfully!",
-        });
-      })
-      .catch((error) => {
-        return res.json({
-          message: "Error creating account",
-        });
-      });
-  });
+module.exports.register_post = async (req,res) => {
+	const {lastName,firstName,email,username,password,accountType} = req.body;
+	let permissions;
+
+	switch(accountType) {
+		case "STUDENT":
+			permissions = [
+				"course.register"
+			];
+			break;
+		case "FACULTY":
+			permissions = [
+				"course.edit"
+			];
+			break;
+		case "ADMIN":
+			permissions = [
+				"course.edit",
+				"account.edit"
+			];
+			break;
+		default:
+			permissions = [];
+	}
+	try {
+		const user = await User.create({lastName,firstName,email,username,password,accountType,permissions});
+		const token = createToken(user._id);
+		res.cookie("codeuni_accountToken",token, {httpOnly:true});
+		res.redirect("/courses");
+	}
+	catch (err) {
+		const errors = handleErrors(err);
+		res.status(400).json({errors});
+	}
 };
 
-const login = (req, res, next) => {
-  let username = req.body.username;
-  let password = req.body.password;
+module.exports.login_post = async (req,res) => {
+	const {username,password} = req.body;
 
-  //Search for user in database
-  User.find({ $or: [{ email: username }] }).then((user) => {
-    //Condition to check if the user exists
-    if (user) {
-      //Comparison of submitted password with encrypted password
-      bcrypt.compare(password, user.password, function (err, result) {
-        if (err) {
-          return res.json({
-            error: err,
-          });
-        }
-        if (result) {
-          //Password assign token after successful login. Token is valid for an hour
-          let token = jwt.sign({ name: user.name }, "AzQ,PI)0(", {
-            expiresIn: "1h",
-          });
-          return res.json({
-            message: "Login successful!",
-            token,
-          });
-        } else {
-          //Error message returned if passwords don't match
-          return res.json({
-            message: "Incorrect password",
-          });
-        }
-      });
-    } else {
-      return res.json({
-        //Error message returned if user if not found in database
-        message: "Invalid login",
-      });
-    }
-  });
+	try {
+		const user = await User.login(username,password);
+		const token = createToken(user._id);
+		res.cookie("codeuni_accountToken", token, {httpOnly:true});
+		res.redirect("/courses");
+	}
+	catch (err) {
+		const errors = handleErrors(err);
+		res.status(400).json({errors});
+	}
 };
 
-module.exports = { register, login };
+module.exports.logout_get = (req,res) => {
+	res.cookie("codeuni_accountToken","",{maxAge:1});
+	res.redirect("/");
+}
+
+module.exports.edit_post = async (req,res) => {
+	const id = req.params.id;
+
+	const {lastName,firstName,email,username,accountType} = req.body;
+	let permissions;
+
+	switch(accountType) {
+		case "STUDENT":
+			permissions = [
+				"course.register"
+			];
+			break;
+		case "FACULTY":
+			permissions = [
+				"course.edit"
+			];
+			break;
+		case "ADMIN":
+			permissions = [
+				"course.edit",
+				"account.edit"
+			];
+			break;
+		default:
+			permissions = [];
+	}
+
+	await User.findByIdAndUpdate(id,{
+		lastName,
+		firstName,
+		email,
+		username,
+		accountType,
+		permissions
+	})
+		.then((result) => res.redirect("/accounts/"+id))
+		.catch((err) => console.log(err));
+}
+
+const handleErrors = (err) => {
+	console.log(err.message, err.code);
+	let errors = {email: "", password: ""};
+
+	// Incorrect Email
+	if(err.message === "Incorrect email") {
+		errors.email = "That eamil is not registered";
+	}
+
+	// Incorrect Password
+	if(err.message === "Incorrect password") {
+		errors.password = "That password is incorrect ";
+	}
+
+	// Duplicate Error Code
+	if(err.code === 11000) {
+		errors.email = "That email is already registered";
+		return errors;
+	}
+
+	// Validation Errors
+	if(err.message.includes("user validation failed")) {
+		Object.values(err.errors).forEach(({properties}) => {
+			errors[properties.path] = properties.message;
+		});
+	}
+	return errors;
+};
+
+const createToken = (id) => {
+	return jwt.sign({id}, "superSecret");
+};

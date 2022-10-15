@@ -1,23 +1,13 @@
-<html lang="en">
-	<%- include("../partials/head.ejs"); %>
+<%- include("../partials/head.ejs") %>
 
-	<body>
-		<%- include("../partials/nav.ejs"); %>
-		<%- include("../partials/sidebar.ejs"); %>
-		<div class="content">
-			<%- include("../partials/new_course.ejs"); %>
-			<%- include("../partials/edit_course.ejs"); %>
-			<%- include("../partials/remove_course_confirm.ejs"); %>
+<h1>Course Details</h1>
 
-			<a href="/courses" class="backBtn">Back</a>
+<h3><%= course.name %></h3>
+<p><%= course.dept_id + course.course_id %></p>
+<p><%= course.desc %></p>
 
-			<h2><%= course.name %></h2>
-			<p><%= course.dept_id + course.course_id %></p>
-			<p><%= course.desc %></p>
-
-			<button onclick="openRemoveCourseConfirm()" name="removeCourseBtn">Delete</button>
-			<button onclick="openEditCourse()" name="editCourseBtn">Edit</button>
-		</div>
-		<%- include("../partials/footer.ejs"); %>
-	</body>
-</html>
+<% if(user.permissions.includes("course.edit")) { %>
+	<button onclick="open_deleteCourse()" name="deleteCourseBtn">Delete</button>
+	<button onclick="open_editCourse()" name="editCourseBtn">Edit</button>
+<% } %>
+<%- include("../partials/foot.ejs") %>

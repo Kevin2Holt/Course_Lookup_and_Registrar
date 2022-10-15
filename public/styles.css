@@ -15,248 +15,291 @@
  */
 
 /*General*/
-@import url("https://fonts.googleapis.com/css2?family=Mali:wght@500&family=Open+Sans:wght@400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&family=Open+Sans:wght@400;500;600;700;800&display=swap');
 * {
-  font-family: "Open Sans";
+	font-family: 'Open Sans';
 }
 a {
-  text-decoration: none;
-  color: #000;
-}
-body {
-  margin: 0; /*This lets everything go right up against the sides of the browser's viewport*/
-}
-.content {
-  /*main body content*/
-  padding: 0 1em;
-  padding-left: 22em;
-  min-height: 10em;
-}
-footer {
-  padding: 0 1em;
+	text-decoration: none;
+	color: #000;
 }
 
+div img{
+	width: 350px;
+	margin-top: 30px;
+	position: left;
+  }
+
+}
+div h2{
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+div h3{
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  color: #999;
+}
+
+body {
+	margin: 0;/*This lets everything go right up against the sides of the browser's viewport*/
+}
+.content {/*main body content*/
+	padding: 0 1em;
+	padding-left: 10em;
+	min-height: 10em;
+}
+footer{
+	text-align: center;
+	margin-top: 120px;
+	color: rgb(58, 58, 58);
+}
+
+
 /*404 Page*/
-#errorMessage {
-  text-align: center;
+#errorMessage{
+	text-align: center;
 }
 
 /* Nav Bar */
 nav {
-  width: 100%;
-  background-color: #bbb;
-  height: 3.4em;
+	width: 100%;
+	background-color: #bbb;
+	height: 3.4em;
 }
 nav li {
-  display: block;
-  float: left;
-  padding: 1em 0.8em;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	display: block;
+	float: left;
+	padding: 1em 0.8em;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-nav h1 {
-  float: left;
-  margin: 0;
-  padding: 0.45em;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+nav h1{
+	float: left;
+	margin: 0;
+	padding: 0.45em;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-nav li:hover {
-  background-color: #999;
+nav a:hover li {
+	background-color: #999;
 }
 nav h1:hover {
-  background-color: #999;
+	background-color: #999;
+}
+nav #siteNav {
+	float: left;
+	margin-left: -2em;
+}
+nav #authNav {
+	float: right;
+}
+nav ul {
+	margin: 0;
+}
+nav #menuBtn {
+	font-size: 20pt;
+	padding: 0.18em 0.5em 0.22em 0.5em;
+
 }
 
-.login {
-  position: relative;
-  left: 900px;
-}
-
-li .login,
-.signUp {
-  float: right;
-}
-
-#newUser,
-#loginForm {
-  text-align: left;
-  display: none;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 10px;
-  width: 30em;
-  float: right;
-}
-
-input[type="text"],
-select {
-  width: 20em;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
 
 /*Course Details Page*/
 .backBtn {
-  float: right;
+	float: right;
 }
 .backBtn:hover {
-  color: #4af;
+	color: #4af;
 }
+.regBtn {
+	padding: 0.25em 0.5em;
+	margin-right: 0.3em;
+	float: left;
+	background-color: #bbb;
+	transition: background-color: 0.3s ease-in-out;
+}
+.regBtn:hover {
+	cursor: pointer;
+	background-color: #999;
+}
+
 
 /*Courses Table*/
 table {
-  background-color: #eee;
-  border: 1px solid #000;
-  border-collapse: collapse;
-  width: 48.75em;
+	background-color: #eee;
+	border: 1px solid #000;
+	border-collapse:  collapse;
+	width: 48.75em;
 }
 table th {
-  background-color: #333;
-  color: #fff;
-  /*border: 1px solid #333;*/
-  border-left: 1px solid #000;
+	background-color: #333;
+	color: #fff;
+	/*border: 1px solid #333;*/
+	border-left: 1px solid #000;
 }
 table td {
-  padding-right: 1em;
-  border-left: 1px solid #000;
+	padding-right: 1em;
+	border-left: 1px solid #000;
 }
-.scrollable {
-  /*For the div surrounding the courses table*/
-  overflow-y: auto;
-  height: 50em;
-  width: 50em;
+.scrollable {/*For the div surrounding the courses table*/
+	overflow-y:  auto;
+	height: 50em;
+	width: 50em;
 }
 .scrollable thead th {
-  position: sticky;
-  top: -1;
-  z-index: 1;
+	position: sticky;
+	top: -1;
+	z-index: 1;
 }
 .singleCourse:hover {
-  color: #4af;
-  cursor: pointer;
+	color: #4af;
+	cursor: pointer;
 }
+#newCourseBtn {
+	float: right;
+}
+
+
+/*Menu*/
+#menu_container {
+	background-color: #efefef;
+	position: fixed;
+	padding: 0;
+	right: 0;
+	top: 3.35em;
+	margin: auto;
+	z-index: 10;
+	visibility: hidden;
+
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+}
+#menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+#menu li {
+	padding: 0.5em 1em;
+	text-align: center;
+	transition: background-color 0.3s ease-in-out;
+}
+#menu li:hover {
+	background-color: #bbb;
+}
+
 
 /*Sidebar*/
 .sidebar {
-  background-color: #bbb;
-  padding: 1em;
-  width: 25%;
-  min-width: 150px;
-  max-width: 250px;
-  position: absolute;
-  top: 7em;
+	background-color: #bbb;
+	padding: 1em;
+	width: 25%;
+	min-width: 150px;
+	max-width: 250px;
+	position: absolute;
+	top: 7em;
 }
 .sideDropButton {
-  background-color: #3498db;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-
-  width: 100%; /*I can't get this to work for some reason.*/
+	background-color: #3498DB;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	
+	width: 100%;/*I can't get this to work for some reason.*/
 }
-.sideDropButton:hover,
-.sideDropButton:focus {
-  background-color: #2980b9;
+.sideDropButton:hover, .sideDropButton:focus {
+	background-color: #2980B9;
 }
 .sideButton {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
 }
 .sideButton-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 140px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 140px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
 }
 .sideButton-content button {
-  color: black;
-  font-size: 11pt;
-  padding: 12px 16px;
-  text-align: center;
-  border: none;
-  width: 100%;
-  display: block;
+	color: black;
+	font-size: 11pt;
+	padding: 12px 16px;
+	text-align: center;
+	border: none;
+	width: 100%;
+	display: block;
 }
 .sideButton button.aButton:hover {
-  background-color: #ddd;
+	background-color: #ddd;
 }
 .show {
-  display: block;
+	display: block;
 }
 
-/*New, Edit, & Remove Pop-ups*/
-.newCourse_block,
-.editCourse_block {
-  position: relative;
-  display: block;
-  margin: 1em 0;
-  height: 2em;
-}
-.newCourse_input,
-.editCourse_input {
-  position: absolute;
-  right: 0px;
 
-  border: 1px solid black;
-  border-radius: 5px;
-  height: 2em;
-  width: 15em;
+/*Pop-ups*/
+.popup_section {
+	position: relative;
+	display: block;
+	margin:  1em 0;
+	height:  2em;
 }
-.newCourse_block label,
-.editCourse_block label {
-  position: absolute;
+.popup_input {
+	position: absolute;
+	right: 0px;
+	
+	border:  1px solid black;
+	border-radius: 5px;
+	height:  2em;
+	width:  15em;
+}
+.popup_section label {
+	position: absolute;
+}
+.popup_container {
+	background-color: #efefef;
+	border: 1px solid black;
+	border-radius: 10px;
+	width:  23em;
+	padding: 1em;
+	padding-top: 0;
+	position: fixed;
+	left: 35%;
+	top: 5em;
+	margin-left: 5em;
+	margin: auto;
+	z-index: 10;
+	visibility: hidden;
+
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
 }
 .desc {
-  height: 5.5em;
+	height: 5.5em;
 }
-.desc textarea {
-  width: 100%;
-  height: 5em;
+.desc textarea{
+	width: 100%;
+	height: 5em;
 }
 .desc label {
-  margin-bottom: 0.5em;
+	margin-bottom: 0.5em;
 }
-.desc textarea,
-.desc label {
-  display: block;
-  position: static;
+.desc textarea, .desc label {
+	display: block;
+	position: static;
 }
 #desc {
-  display: block;
+	display: block;
 }
-#newCourse,
-#editCourse,
-#removeCourse {
-  background-color: #efefef;
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 23em;
-  padding: 1em;
-  padding-top: 0;
-  position: fixed;
-  left: 35%;
-  top: 5em;
-  margin-left: 5em;
-  margin: auto;
-  z-index: 10;
-  visibility: hidden;
-
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
+#deleteCourse {
+	text-align: center;
 }
-#removeCourse {
-  text-align: center;
-}
-#removeCourse button {
-  margin: 0 5px;
+#deleteCourse button {
+	margin: 0 5px;
 }

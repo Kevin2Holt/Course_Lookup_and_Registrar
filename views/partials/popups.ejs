@@ -1,0 +1,26 @@
+<!-- Permissions Required -->
+<% if(user) { %>
+	<% if(user.permissions.includes("course.edit")) { %>
+		<% if(popups.newCourse) { %>
+			<%- include("./popups/newCourse.ejs"); %>
+		<% } %>
+
+		<% if(popups.deleteCourse) { %>
+			<%- include("./popups/deleteCourse.ejs"); %>
+		<% } %>
+
+		<% if(popups.editCourse) { %>
+			<%- include("./popups/editCourse.ejs"); %>
+		<% } %>
+	<% } %>
+	<%- include("./popups/menu.ejs"); %>
+<% } %>
+
+<!-- No Permissions Required -->
+<% if(popups.login) { %>
+	<%- include("./popups/login.ejs"); %>
+<% } %>
+
+<% if(popups.register) { %>
+	<%- include("./popups/newAccount.ejs"); %>
+<% } %>
