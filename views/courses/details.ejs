@@ -5,6 +5,10 @@
 <ul id="authNav">
 	<% if(user) { %>
 
+	<button onclick="window.location.href='/courses';" class="backBtn">
+		Back
+	</button>
+
 <h3><%= course.name %></h3>
 <p><%= course.dept_id + course.course_id %></p>
 <p><%= course.desc %></p>

@@ -2,7 +2,9 @@
 <%- include("../partials/popups/deleteAccount.ejs"); %>
 <%- include("../partials/popups/editAccount.ejs"); %>
 
-<a href="/accounts/list" class="backBtn">Back</a>
+<button onclick="window.location.href='/accounts/list';" class="backBtn">
+    Back
+</button>
 
 <h2>Name: <%= account.name %></h2>
 <p>Email: <%= account.email %></p>
