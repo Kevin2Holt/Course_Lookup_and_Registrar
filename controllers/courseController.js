@@ -165,6 +165,11 @@ module.exports.removeCourse_post = async (req,res) => {
 	const courseId = req.params.id;
 	const stuId = req.params.stuid;
 
+	console.log("stuId: ",stuId);
+	console.log("courseId: ",courseId);
+
+	console.log("Register.find(): ",await Register.find({stud_id:stuId, course_id:courseId}));
+
 	await Register.findOneAndDelete({course_id:courseId, stud_id:stuId})
 		.then((result) => {
 			res.redirect("/courses/register/my");

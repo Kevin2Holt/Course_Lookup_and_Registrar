@@ -27,9 +27,9 @@ module.exports.register_post = async (req,res) => {
 	}
 	try {
 		const user = await User.create({lastName,firstName,email,username,password,accountType,permissions});
-		const token = createToken(user._id);
-		res.cookie("codeuni_accountToken",token, {httpOnly:true});
-		res.redirect("/courses");
+		// const token = createToken(user._id);
+		// res.cookie("codeuni_accountToken",token, {httpOnly:true});
+		res.redirect("/accounts/list");
 	}
 	catch (err) {
 		const errors = handleErrors(err);
